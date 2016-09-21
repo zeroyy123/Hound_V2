@@ -28,6 +28,7 @@ class driverCtrl():
 			self.driver = webdriver.PhantomJS(service_args=service_args)
 		else:
 			chrome_options = webdriver.ChromeOptions()
+			# chrome_options.add_argument("user-data-dir="+ os.path.abspath(r"C:\Users\a16247\AppData\Local\Google\Chrome\User Data"))
 			chrome_options.add_argument("user-data-dir="+ os.path.abspath(r"C:\Users\yy\AppData\Local\Google\Chrome\User Data"))
 			if PROXY != '':
 				chrome_options.add_argument('--proxy-server=http://'+PROXY)

@@ -32,11 +32,9 @@ class driverCtrl_tb(dc.driverCtrl):
 			time.sleep(1)
 		except:
 			print 'no total link'
-		
-		
+			
 		self.sort_row(rule = 2)
 		time.sleep(1)
-		
 		self.price_row(rule = -2)
 		time.sleep(1)
 		
@@ -115,7 +113,7 @@ class driverCtrl_tb(dc.driverCtrl):
 			elems[max_count].click()
 		elif rule == -2:
 			try:
-				start = elems[2].get_attribute('data-start')
+				start = elems[1].get_attribute('data-start')
 				print 'start: ',start
 			except:
 				start = '100'
@@ -133,10 +131,11 @@ class driverCtrl_tb(dc.driverCtrl):
 												/ul[@class="items g-clearfix"]\
 												/li\
 												/input\
-												')
+												') 
 			print len(elems)
 			elems[0].send_keys(Keys.BACKSPACE + start)
-			# elems[1].send_keys(Keys.BACKSPACE + '100')
+			
+			ActionChains(self.driver).move_to_element(elems[0]).perform()
 			elems = self.driver.find_elements_by_xpath('//div[@id="mainsrp-sortbar"] \
 												/div[@class="m-sortbar"]\
 												/div[@class="sort-row"]\
@@ -145,11 +144,16 @@ class driverCtrl_tb(dc.driverCtrl):
 												/div[@class="inputs J_LaterHover"]\
 												/div[@class="inner"]\
 												/ul[@class="items g-clearfix"]\
-												/li[@class="submit"]\
+												/li/button\
 												')
-			# print len(elems)	
-			print elems[0].text
-			elems[0].click()
+			print len(elems)	
+			# ActionChains(self.driver).move_to_element(elems[0]).perform()
+			
+			print elems[0].get_attribute('type')
+			try:                       #mouse shall not move to the driver window
+				elems[0].click()
+			except:
+				elems[0].click()
 		else:
 			elems[rule].click()
 		time.sleep(1)
