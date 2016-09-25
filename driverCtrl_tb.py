@@ -36,7 +36,7 @@ class driverCtrl_tb(dc.driverCtrl):
 		self.sort_row(rule = 2)
 		time.sleep(1)
 		self.price_row(rule = -2)
-		time.sleep(1)
+		time.sleep(2)
 		
 		# filter the same goods
 		# self.filter_row()
@@ -44,7 +44,7 @@ class driverCtrl_tb(dc.driverCtrl):
 		
 		js="var q=document.body.scrollTop=100000"
 		self.driver.execute_script(js)
-		time.sleep(1)
+		time.sleep(2)
 		content = self.driver.page_source.encode('utf-8')
 		url     = self.driver.current_url.encode('utf-8')
 		return [content,url]

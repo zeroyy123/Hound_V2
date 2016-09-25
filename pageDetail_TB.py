@@ -5,7 +5,7 @@ import numpy as np
 import re
 
 
-class pageDetail():
+class pageDetail_TB():
 	def __init__(self,response):
 		self.response = response
 		try:
